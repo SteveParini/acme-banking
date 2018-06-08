@@ -1,6 +1,13 @@
-version: '3.2'
+version: '3.5'
 
-services:
+services:  
+  zap:
+    image: owasp/zap2docker-stable 
+    ports:
+      - "8090:8090" 
+    depends_on:
+      - webapp
+    command: 'zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true'
   webapp:
     image: acme-banking:latest
     environment:
@@ -17,4 +24,5 @@ services:
       - MYSQL_DATABASE=acmedb
       - MYSQL_USER=acme
       - MYSQL_PASSWORD=${DB_PASSWORD}
+
 
