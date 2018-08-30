@@ -17,6 +17,12 @@ if [ ! -d "${WORKSPACE}/dependency-check" ] ; then
   rm /tmp/owasp-dc.zip
 fi
 
+# Check if output directory exists
+if [ ! -d "${WORKSPACE}/reports/owasp-dependency-check" ] ; then
+  echo 'Creating OWASP Dependency Check report directory'
+  mkdir -p "${WORKSPACE}/reports/owasp-dependency-check"
+fi
+
 # Run OWASP Dependency Check Dockerfile
 # TODO: Remove hard-coded proxy information, parse it from ${http_proxy}
 /bin/sh "${WORKSPACE}/dependency-check/bin/dependency-check.sh" \
