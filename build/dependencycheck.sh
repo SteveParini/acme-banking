@@ -31,4 +31,4 @@ fi
   --out "${WORKSPACE}/reports/owasp-dependency-check" \
   --scan $(pwd) \
   --proxyserver 172.17.0.1 --proxyport 3128 \
-  --disableBundleAudit
+  --disableBundleAudit --disableAssembly
