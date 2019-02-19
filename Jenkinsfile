@@ -4,7 +4,6 @@ pipeline {
     /* Tag image using Docker registry and build tag */
     IMAGE_NAME="${DOCKER_REGISTRY}/psc/acme-banking:${BUILD_TAG}"
     IMAGE_ALIAS="${DOCKER_REGISTRY}/psc/acme-banking:latest"
-    SNYK_TOKEN = credentials('SNYK_TOKEN')
   }
 
   stages {
@@ -32,6 +31,7 @@ pipeline {
     /* Identify known vulnerable dependencies */
     stage('Software Composition Analysis') {
       steps {
+         snykSecurity(tokenCredentialId: 'SNYK_TOKEN', failOnBuild: true, monitor: true) 
          sh 'snyk test'
          sh 'npm audit'
       }
