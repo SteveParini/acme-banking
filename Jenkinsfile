@@ -31,6 +31,7 @@ pipeline {
     /* Identify known vulnerable dependencies */
     stage('Software Composition Analysis') {
       steps {
+        sh 'snyk auth'
         sh 'snyk test'
         sh 'npm audit'
       }
