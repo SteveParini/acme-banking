@@ -33,6 +33,7 @@ pipeline {
       steps {
         //snykSecurity(tokenCredentialId: 'SNYK_TOKEN', failOnBuild: true, monitor: true) {
         withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
+          sh 'snyk auth'
           sh 'snyk test'
           sh 'npm audit'
         }
