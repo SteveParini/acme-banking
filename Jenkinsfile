@@ -31,9 +31,10 @@ pipeline {
     /* Identify known vulnerable dependencies */
     stage('Software Composition Analysis') {
       steps {
-         snykSecurity(tokenCredentialId: 'SNYK_TOKEN', failOnBuild: true, monitor: true) 
-         sh 'snyk test'
-         sh 'npm audit'
+        snykSecurity(tokenCredentialId: 'SNYK_TOKEN', failOnBuild: true, monitor: true) {
+          sh 'snyk test'
+          sh 'npm audit'
+        }
       }
     }
 
