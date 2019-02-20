@@ -11,5 +11,5 @@ chmod -R 777 "${WORKSPACE}/OWASP-Dependency-Check/data"
 
 
 # Run OWASP Dependency Check Dockerfile
-docker pull owasp/dependency-check
-docker run --rm --volume ${WORKSPACE}:/src --volume "${WORKSPACE}/OWASP-Dependency-Check/data":/usr/share/dependency-check/data --volume "${WORKSPACE}/reports/owasp-dependency-check":/report owasp/dependency-check --scan /src/package.json --format "XML" --project "acme-banking" -o /report -n
+#docker pull owasp/dependency-check
+#docker run --rm --volume ${WORKSPACE}:/src --volume "${WORKSPACE}/OWASP-Dependency-Check/data":/usr/share/dependency-check/data --volume "${WORKSPACE}/reports/owasp-dependency-check":/report owasp/dependency-check --scan /src/package.json --format "XML" --project "acme-banking" -o /report -n
