@@ -13,7 +13,8 @@ pipeline {
     }
     stage('OWASP Dependency Check'){
         steps{
-            bat '/bin/sh -x ${WORKSPACE}/bin/dependencycheck.sh'
+          cd D:\Program Files\dependency-check\bin
+          .\dependency-check.bat --project Testing --out D:\Code\GitHub --scan ${WORKSPACE} -f XML --disableBundleAudit
         }
     }
     stage('ESLint'){
