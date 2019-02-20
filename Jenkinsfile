@@ -8,40 +8,40 @@ pipeline {
   stages {
     stage('Build'){
         steps{
-            sh '/bin/sh -x ${WORKSPACE}/bin/npm.sh'
+            bat '/bin/sh -x ${WORKSPACE}/bin/npm.sh'
         }
     }
     stage('OWASP Dependency Check'){
         steps{
-            sh '/bin/sh -x ${WORKSPACE}/bin/dependencycheck.sh'
+            bat '/bin/sh -x ${WORKSPACE}/bin/dependencycheck.sh'
         }
     }
     stage('ESLint'){
         steps{
-            sh '/bin/sh -x ${WORKSPACE}/bin/eslint.sh'
+            bat '/bin/sh -x ${WORKSPACE}/bin/eslint.sh'
         }
     }
     stage('Docker Image'){
         steps{
             withCredentials([string(credentialsId: 'AQUA_TOKEN', variable: 'AQUA_TOKEN')]) {
-                sh '/bin/sh -x ${WORKSPACE}/bin/dockerimage.sh'
+                bat '/bin/sh -x ${WORKSPACE}/bin/dockerimage.sh'
             }
         }
     }
     stage('Docker Clean-up'){
         steps{
-            sh '/bin/sh -x ${WORKSPACE}/bin/dockercleanup.sh'
+            bat '/bin/sh -x ${WORKSPACE}/bin/dockercleanup.sh'
         }
     }
     stage ('Docker Deploy & Zap Scan'){
         steps{
-            sh '/bin/sh -x ${WORKSPACE}/bin/zapscan.sh'
+            bat '/bin/sh -x ${WORKSPACE}/bin/zapscan.sh'
         }
     }
     stage('Threadfix Result'){
         steps{
             withCredentials([string(credentialsId: 'THREADFIX_API_KEY', variable: 'THREADFIX_API_KEY')]) {
-                sh '/bin/sh -x ${WORKSPACE}/bin/threadfix.sh'
+                bat '/bin/sh -x ${WORKSPACE}/bin/threadfix.sh'
             }
         }
     }
