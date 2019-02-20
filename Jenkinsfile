@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build'){
         steps{
-            bat '/bin/sh -x ${WORKSPACE}/bin/npm.sh'
+            bat '\bin\sh -x ${WORKSPACE}\bin\npm.sh'
         }
     }
     stage('OWASP Dependency Check'){
