@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build'){
         steps{
-            bat '\bin\sh -x ${WORKSPACE}\bin\npm.sh'
+            npm install
         }
     }
     stage('OWASP Dependency Check'){
