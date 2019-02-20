@@ -8,12 +8,13 @@
 [ -z "${IMAGE_ALIAS}" ] && echo 'IMAGE_ALIAS is not defined.' && exit
 
 # Creating docker image
-docker build --no-cache --build-arg=token=${AQUA_TOKEN} -t "${IMAGE_NAME}" "${WORKSPACE}"
+#docker build --no-cache --build-arg=token=${AQUA_TOKEN} -t "${IMAGE_NAME}" "${WORKSPACE}"
+docker build --no-cache -t "${IMAGE_NAME}" "${WORKSPACE}"
 docker tag "${IMAGE_NAME}" "${IMAGE_ALIAS}"
 
 # Get Aqua microscanner report
-mkdir -p "${WORKSPACE}/reports/aqua"
-docker run --rm "${IMAGE_NAME}" cat /microscanner_report.html > ${WORKSPACE}/reports/aqua/${BUILD_TAG}.html
+#mkdir -p "${WORKSPACE}/reports/aqua"
+#docker run --rm "${IMAGE_NAME}" cat /microscanner_report.html > ${WORKSPACE}/reports/aqua/${BUILD_TAG}.html
             
 docker push "${IMAGE_NAME}"
 docker push "${IMAGE_ALIAS}"
