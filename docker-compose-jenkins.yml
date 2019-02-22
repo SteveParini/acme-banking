@@ -1,8 +1,8 @@
 version: '3.2'
 
 services:
-  image:
-    acme-banking:latest
+  webapp:
+    image: 127.0.0.1:5000/psc/acme-banking:latest
     environment:
       - DB_HOST=database
       - DB_INSTANCE=acmedb
