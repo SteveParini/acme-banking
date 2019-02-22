@@ -7,7 +7,7 @@ services:
       - DB_HOST=database
       - DB_INSTANCE=acmedb
       - DB_USERNAME=acme
-      - DB_PASSWORD
+      - DB_PASSWORD=acme
     ports:
       - 3000:3000
   database:
@@ -16,7 +16,7 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=acmedb
       - MYSQL_USER=acme
-      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=acme
 
 volumes:
   owaspzap:
